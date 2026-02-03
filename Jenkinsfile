@@ -9,18 +9,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    sh '''
-                    mvn sonar:sonar \
-                    -Dsonar.projectKey=sonar-demo \
-                    -Dsonar.projectName=sonar-demo
-                    '''
+                    bat 'mvn sonar:sonar -Dsonar.projectKey=sonar-demo'
                 }
             }
         }
