@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/harishjangam235/sonar-demo.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
